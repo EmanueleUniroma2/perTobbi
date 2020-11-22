@@ -5,7 +5,7 @@
 		<style>
 			.header_row{
 				font-weight: bold;
-				font-size: 1.1rem;
+				font-size: 1em;
 			}
 
 			.row{
@@ -14,8 +14,8 @@
 
 			.row_el{
 				display: inline-block;
-				min-width: 15rem;
-				padding: 0.5rem;
+				min-width: 15em;
+				padding: 0.5em;
 				border: 1px solid;
 			}
 		</style>
@@ -82,6 +82,19 @@
 
 					if(i == 3){
 						e.style.minWidth = "30rem";
+
+						if(window.innerWidth < 900){
+							e.style.minWidth = "27rem";
+						}
+						if(window.innerWidth < 830){
+							e.style.minWidth = "24rem";
+						}
+						if(window.innerWidth < 750){
+							e.style.minWidth = "18rem";
+						}
+						if(window.innerWidth < 750){
+							e.style.minWidth = "14rem";
+						}
 					}
 
 					return e;
@@ -111,6 +124,10 @@
 
 					let w = document.getElementById("wrap");
 
+					while(w.firstChild){
+						w.removeChild(w.firstChild);
+					}
+
 					let data = getData();
 
 					w.appendChild(addRowHeader(["Nome Carta", "Numero", "Combo"]));
@@ -118,12 +135,33 @@
 					for(let i = 0; i < data.length; i++){
 						w.appendChild(addRow(data[i]));
 					}
+
+					initSize();
+				}
+
+				function hScroll(){
+					init();
+				}
+
+				function initSize(){
+					let w = document.getElementById("wrap");
+					w.style.fontSize = "1rem";
+
+					if(window.innerWidth < 900){
+						w.style.fontSize = "0.8rem";
+					}
+					if(window.innerWidth < 750){
+						w.style.fontSize = "0.6rem";
+					}
+					if(window.innerWidth < 550){
+						w.style.fontSize = "0.45rem";
+					}
 				}
 		</script>
 	</head>
 
 
-	<body onload="init();">
+	<body onload="init();" onresize="hScroll();">
 		<div id="wrap" class="wrap">
 
 		</div>
