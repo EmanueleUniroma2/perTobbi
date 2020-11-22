@@ -68,6 +68,9 @@
 
 				function addRowElement(data, i){
 
+					if(i == 3){
+						return;
+					}
 
 					let d = data;
 					if(d.length == 0){ d = "-"; }
@@ -77,7 +80,7 @@
 					e.innerHTML = d;
 
 					if(i == 2){
-						e.style.minWidth = "2rem";
+						e.style.minWidth = "5rem";
 					}
 
 					if(i == 3){
@@ -130,7 +133,7 @@
 
 					let data = getData();
 
-					w.appendChild(addRowHeader(["Nome Carta", "#", "Combo"]));
+					w.appendChild(addRowHeader(["Nome Carta", "Numero", "Combo"]));
 
 					for(let i = 0; i < data.length; i++){
 						w.appendChild(addRow(data[i]));
