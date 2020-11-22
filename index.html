@@ -141,6 +141,10 @@
 
 				function hScroll(){
 					init();
+
+					let i = docment.getElementById("inf");
+					i.innerHTML = window.innerWidth;
+					i.style.opacity = "0.3";
 				}
 
 				function initSize(){
@@ -165,6 +169,7 @@
 		<div id="wrap" class="wrap">
 
 		</div>
+		<div id="inf"></div>
 	</body>
 
 </html>
