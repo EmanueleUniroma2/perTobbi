@@ -1,0 +1,132 @@
+<html>
+	<head>
+		<title>Deck Cyber</title>
+
+		<style>
+			.header_row{
+				font-weight: bold;
+				font-size: 1.1rem;
+			}
+
+			.row{
+				font-size: 1rem:
+			}
+
+			.row_el{
+				display: inline-block;
+				min-width: 15rem;
+				padding: 0.5rem;
+				border: 1px solid;
+			}
+		</style>
+
+		<script type="text/javascript">
+
+				function getData(){
+					let list = [
+						["E", "Cyber Drago"  	   			      				,3,""],
+						["E", "Cyber Naga"  	   			      				,3,""],
+						["E", "Cyber Drago Zwei"  	   							,2,""],
+						["E", "Proto Cyber Drago" 	   							,3,""],
+						["E", "Cybern corazzato"                    ,2,""],
+						["E", "Riflettore"                          ,2,""],
+						["E", "La Luce - Creatura sigillo fusione"  ,3,"Evoca fusioni senza magie"],
+						["E", "Cyber Fenice"                        ,3,""],
+						["M", "Rimozione del Limite"    						,1,""],
+						["M", "Mostro resuscitato"     							,1,""],
+						["M", "Fusione futura"   		      					,1,"Da usare assieme a fusione sovraccarico"],
+						["M", "Fusione sovraccarico"   							,1,"Evoca supremo chimeratech usando materiali dal cimitero"],
+						["M", "Vincolo di potere"      							,2,""],
+						["M", "Tifone spaziale mistico"      				,1,""],
+						["M", "metamorfosi"                 				,1,"La usi su poltiglia rifletti metalli e ti prendi un cyber drago finale gratis"],
+						["M", "Tempesta potente"      							,1,""],
+						["M", "Buco nero"             							,1,""],
+						["M", "Spada rivelatrice"      							,1,""],
+						["T", "Forza riflessa"	              			,1,""],
+						["T", "Spaventapasseri di ferraglia"				,3,""],
+						["T", "Cessate il fuoco"                    ,3,""],
+						["T", "Intervento sul DNA"                  ,3,""],
+						["T", "Poltiglia rifletti metalli"          ,3,""],
+						["F", "Drago fortezza chimeratech"          ,3,""],
+						["F", "Drago supremo chimeratech"           ,3,""],
+						["F", "Cyber Drago gemello" 		 	  	      ,3,""],
+						["F", "Cyber Drago Finale" 	   	 	  	      ,3,""],
+						["F", "Drago fortezza chimeratech"          ,3,""],
+					];
+
+					return list;
+				}
+
+				function addRowHeader(content_list){
+					let r = document.createElement("div");
+					r.className = "header_row";
+					for(let i = 0; i < content_list.length; i++){
+						r.appendChild(addRowElement(content_list[i], i+1));
+					}
+					return r;
+				}
+
+				function addRowElement(data, i){
+
+
+					let d = data;
+					if(d.length == 0){ d = "-"; }
+
+					let e = document.createElement("div");
+					e.className = "row_el";
+					e.innerHTML = d;
+
+					if(i == 2){
+						e.style.minWidth = "4rem";
+					}
+
+					if(i == 3){
+						e.style.minWidth = "30rem";
+					}
+
+					return e;
+				}
+
+				function getColorFromType(type) {
+
+						if(type == "E"){ return "rgba(148, 108, 55, 0.5)"; }
+						if(type == "M"){ return "rgba(37, 129, 166, 0.5)"; }
+						if(type == "T"){ return "rgba(154, 53, 49, 0.5)"; }
+						if(type == "F"){ return "rgba(102, 0, 153, 0.5)"; }
+
+						return "transparent";
+				}
+
+				function addRow(content_list){
+					let r = document.createElement("div");
+					for(let i = 1; i < content_list.length; i++){
+						let n = addRowElement(content_list[i], i);
+						n.style.background = getColorFromType(content_list[0]);
+						r.appendChild(n);
+					}
+					return r;
+				}
+
+				function init(){
+
+					let w = document.getElementById("wrap");
+
+					let data = getData();
+
+					w.appendChild(addRowHeader(["Nome Carta", "Numero", "Combo"]));
+
+					for(let i = 0; i < data.length; i++){
+						w.appendChild(addRow(data[i]));
+					}
+				}
+		</script>
+	</head>
+
+
+	<body onload="init();">
+		<div id="wrap" class="wrap">
+
+		</div>
+	</body>
+
+</html>
