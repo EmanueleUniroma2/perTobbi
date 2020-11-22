@@ -61,7 +61,11 @@
 					let r = document.createElement("div");
 					r.className = "header_row";
 					for(let i = 0; i < content_list.length; i++){
-						r.appendChild(addRowElement(content_list[i], i+1));
+						let e = addRowElement(content_list[i], i+1);
+
+						if(e != null){
+							r.appendChild();							
+						}
 					}
 					return r;
 				}
@@ -69,7 +73,7 @@
 				function addRowElement(data, i){
 
 					if(i == 3){
-						return;
+						return null;
 					}
 
 					let d = data;
@@ -117,8 +121,11 @@
 					let r = document.createElement("div");
 					for(let i = 1; i < content_list.length; i++){
 						let n = addRowElement(content_list[i], i);
-						n.style.background = getColorFromType(content_list[0]);
-						r.appendChild(n);
+						if(n != null){
+							n.style.background = getColorFromType(content_list[0]);
+							r.appendChild(n);
+						}
+
 					}
 					return r;
 				}
