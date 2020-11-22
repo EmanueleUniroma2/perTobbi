@@ -77,7 +77,7 @@
 					e.innerHTML = d;
 
 					if(i == 2){
-						e.style.minWidth = "4rem";
+						e.style.minWidth = "2rem";
 					}
 
 					if(i == 3){
@@ -130,7 +130,7 @@
 
 					let data = getData();
 
-					w.appendChild(addRowHeader(["Nome Carta", "Numero", "Combo"]));
+					w.appendChild(addRowHeader(["Nome Carta", "#", "Combo"]));
 
 					for(let i = 0; i < data.length; i++){
 						w.appendChild(addRow(data[i]));
